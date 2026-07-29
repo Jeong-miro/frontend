@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 선택자
+            1) 태그 선택자 <h1
+            2) 아이디 선택자 <id=""
+            3) 클래스 선택자 <class=""
+            4) 전체 선택자 : *
+            5) 자손 선택자 : 공백
+            6) 자식 선택자 : >
+            7) 인접형제 선택자 : +(뒤에 따라나오는 첫번쨰 요소) or ~ (뒤에 따라나오는 모든 요소)
+            8) 그룹화 
+            9) 속성 선택자 : [class=''] , [id=''], [속성명^=값] : 값으로 시작하는
+                [속성명$=값] : 값으로 끝나는
+                [속성명~=값] : 값이 포함된
+                [속성명]
+            10) 가상 클래스 선택자 
+            a : 밑줄, 파란색
+                active : 빨간색 (누르고 있을 때)
+                visited : 보라색
+                link
+                :hover : 요소에 마우스 올려놓았을 때
+                :checked, disabled
+
+            1) 가상 요소 선택자
+                ::before, ::after
+
+            12) 구조 선택자
+                :first-child, :last-child, :nth-child()
+                :first-of-type, :last-of-type, :nth-of-type
+
+            13) not(선택자) : 해당 선택자가 아닌
+            F~
+        */
+      #title, 
+      nav #title2 {
+        color: brown;
+      }
+      #title:hover{
+        background-color: orange;
+      }
+
+      /* [href]{
+        color: red;
+      } */
+       /* a[target="_blank"]{
+        color: red;
+       }
+       [class$="name"]{
+        background-color: blueviolet;
+       }
+        [class~="line"]{
+        background-color: blueviolet;
+       } */
+        a:link{
+            text-decoration: none;
+            color: black;
+        }
+        a:visited{
+            color : black;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+        .box:hover{
+            width: 200px;
+        }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 id="title">css 선택자</h1>
+      <h2 class="fruit_name">형재 선택자1</h2>
+      <h2>형제 선택자2</h2>
+    </div>
+    <div class="box"></div>
+    <!-- ul>li*3 -->
+    <ul>
+      <li class="color">List Item1</li>
+      <li class="color line">List Item2</li>
+      <li class="color line weight">List Item3</li>
+    </ul>
+    <nav>
+      <h1 id="title2">css 선택자</h1>
+      <h1>css 선택자2</h1>
+    </nav>
+    <ul>
+        <li><a href="http://www.naver.com">네이버</a></li>
+        <li><a href="http://www.daum.net" target="_blank">다음</a></li>
+    </ul>
+</html>

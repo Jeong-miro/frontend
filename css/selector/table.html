@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    td:hover {
+      background-color: darkgoldenrod;
+      font-size: 20px;
+    }
+    th:hover {
+      background-color: aqua;
+    }
+    /* [disabled] {
+      background-color: tomato;
+    } */
+    input:disabled {
+      background-color: tomato;
+    }
+    input:checked + span {
+      color: red;
+    }
+    h1::before {
+      content: "before ";
+    }
+    h1::after {
+      content: " after";
+      color: red;
+    }
+  </style>
+  <body>
+    <table border="1" style="width: 500px">
+      <tr>
+        <td>이름</td>
+        <td>주소</td>
+        <td>전화번호</td>
+      </tr>
+      <tr>
+        <th>홍길동</th>
+        <th>서울 종로구</th>
+        <th>010-1234-5678</th>
+      </tr>
+    </table>
+
+    <form action="">
+      <fieldset>
+        <legend>사용자정보</legend>
+        <label
+          >이름<input type="text" name="" id="" value="홍길동" disabled
+        /></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>신청과목</legend>
+        <!-- ctrl shift p warp -->
+        <!-- ctrl alt 화살표 : 같은 영역 잡기 -->
+        <label
+          ><input type="radio" name="subject" id="" /><span>회화</span></label
+        >
+        <label
+          ><input type="radio" name="subject" id="" /><span>문법</span></label
+        >
+        <label
+          ><input type="radio" name="subject" id="" /><span>작문</span></label
+        >
+      </fieldset>
+    </form>
+    <h1>의사요소 선택자</h1>
+    <ul>
+      <li>리스트1</li>
+      <li>리스트2</li>
+    </ul>
+  </body>
+</html>

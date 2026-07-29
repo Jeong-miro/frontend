@@ -1,0 +1,50 @@
+/* 모든 p 의 글자를 파란색으로 변경 */
+p {
+  color: blue;
+}
+/* id 가 Lastname 인 요소의 글자를 빨강색으로 */
+#Lastname {
+  color: red;
+}
+/* intro 영역에 배경색 임의 */
+div.intro {
+  background-color: antiquewhite;
+}
+/* h1,h3,th의 글자색을 녹색으로 */
+h1,
+h3,
+th {
+  color: green;
+}
+/* 모든 th,td 안쪽 여백을 10px (padding : 10 px) */
+th,
+td {
+  padding: 10px;
+}
+/* h1 마우스 올리면 배경색 변경 */
+h1:hover {
+  background-color: burlywood;
+}
+/* title 속성 중 beautiful이라면 밑줄(text-decoration:underline) */
+[title~="beautiful"] {
+  text-decoration: underline;
+}
+/* myquote 영역 선택 후 테두리 클래스 명 이용한 형태 / 인접형제선택자 형식 */
+p.myquote {
+  border: 2pt solid black;
+}
+ul#Listfriends + .myquote {
+  border: 2pt dotted black;
+}
+/* 테이블 짝수 행 배경색 추가 */
+/* odd( == 2n + 1 ), even ( == 2n ) 으로 가능 */
+table tr:nth-child(even) {
+  background-color: yellowgreen;
+}
+/* 테이블 첫번쨰 행(헤더행)의 배경을 검은색, 글자색을 흰색으로 주기*/
+table tr:first-child {
+  background-color: black;
+}
+table tr > th {
+  color: white;
+}
