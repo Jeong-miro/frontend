@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./data/favicon.ico" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- form 태그 
+        폼 태그 속성
+        action : form 요소의 값들이 가야할 곳(경로=>서버프로그램)
+        method : get(기본) 혹은 post
+
+        1) input
+            text : 한 줄짜리 text
+            radio : 하나만 선택 시(필수로 value 쓰지않으면 on/off 로 입력)
+            checkbox : 여러개 선택 시(필수로 value)
+            submit : form 요소의 값들을 action 에 적힌 곳으로 전송
+            button : 버튼모양으로만 나옴 (기능 x) => 스크립트 필요
+
+            date
+            datetime-local
+            email
+            file
+            color
+            month
+            number
+            password
+            search
+            tel
+            time
+            url
+            week
+        input 요소에 사용할 수 있는 속성
+        value, readonly, disabled, size, maxlength, min,max,multiple
+        pattern(정규식), placeholder, required(무조건 입력값 요구)
+        step,autofocus
+
+        form 요소에 사용할 수 있는 속성
+        action, method, autocomplete, novalidate(required => 작동 불가)
+    -->
+    <!-- http://127.0.0.1:5500/html/table.html?name=%ED%99%8D%EA%B8%B8%EB%8F%99&fruits1=%ED%8F%AC%EB%8F%84&fruits2=%ED%8F%AC%EB%8F%84 -->
+    <form
+      action="table.html"
+      method="get"
+      autocomplete="off"
+      novalidate
+      id="form1"
+    >
+      <div>
+        <label for="tel">전화번호</label>
+        <input
+          type="tel"
+          name="tel"
+          id="tel"
+          pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+          placeholder="형식 : 010-0000-0000"
+          autofocus
+        />
+      </div>
+      <div>
+        <!-- <label for="name">이름</label>
+        <input type="text" name="name" id="name" /> -->
+        <label>
+          이름
+          <input
+            type="text"
+            name="name"
+            id="name"
+            size="50"
+            pattern="[가-힣]{2,}"
+            required
+          />
+          <!-- disabled , readonly : 비활성화 / 읽기전용 -->
+        </label>
+        <label>
+          <br />
+          주소
+          <input type="text" name="addr" id="addr" size="50" maxlength="5" />
+          <!-- disabled , readonly : 비활성화 / 읽기전용 -->
+        </label>
+      </div>
+      <div>
+        <input type="radio" name="fruits1" id="apple" value="사과" />
+        <label for="apple">사과</label>
+        <!-- 특정 요소에게 라벨링 -->
+        <input type="radio" name="fruits1" id="grape" value="포도" />
+        <label for="grape">포도</label>
+        <input type="radio" name="fruits1" id="banana" value="바나나" />
+        <label for="banana">바나나</label>
+      </div>
+      <div>
+        <input type="checkbox" name="fruits2" id="" value="사과" />
+        <label for="">사과</label>
+        <input type="checkbox" name="fruits2" id="" value="포도" />
+        <label for="">포도</label>
+        <input type="checkbox" name="fruits2" id="" value="바나나" />
+        <label for="">바나나</label>
+      </div>
+      <div>
+        <input type="date" name="" id="" min="2026-07-01" max="2030-01-01" />
+        <input type="datetime-local" name="" id="" />
+      </div>
+      <div>
+        <input type="email" name="" id="" />
+      </div>
+      <div>
+        <input type="file" name="" id="" multiple />
+      </div>
+      <div>
+        <input type="color" name="" id="" />
+      </div>
+      <div>
+        <input type="month" name="" id="" />
+      </div>
+      <div>
+        number
+        <input type="number" name="" id="" min="1" max="30" step="3" />
+      </div>
+      <div>
+        <input type="password" name="" id="" />
+      </div>
+      <div>
+        <input type="search" name="" id="" />
+      </div>
+      <div>
+        <input type="tel" name="" id="" />
+      </div>
+      <div>
+        <input type="time" name="" id="" />
+      </div>
+      <div>
+        <input type="url" name="" id="" />
+      </div>
+      <div>
+        <input type="week" name="" id="" />
+      </div>
+      <div>
+        <select name="cars" id="cars" size="5" multiple>
+          <optgroup label="Swedish Cars">
+            <option value="volvo">volvo</option>
+            <option value="saab">saab</option>
+          </optgroup>
+          <optgroup label="Germen Cars">
+            <option value="fiat">fiat</option>
+            <option value="audi">audi</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <textarea name="msg" id="" cols="30" rows="10">playing</textarea>
+        <!-- 안에 적은 내용이 value (playing) -->
+      </div>
+      <div>
+        <input type="submit" value="전송" />
+        <input type="reset" value="초기화" />
+        <input type="button" value="보내기" />
+
+        <button type="submit">submit</button>
+        <button type="reset">reset</button>
+        <button type="button">button</button>
+      </div>
+    </form>
+
+    <fieldset form="form1">
+      <legend>Personalia:</legend>
+      <label for="fname">First Name</label>
+      <input type="text" name="fname" id="fname" form="form1" />
+    </fieldset>
+  </body>
+</html>
