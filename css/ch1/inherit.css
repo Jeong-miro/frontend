@@ -1,0 +1,22 @@
+.blue {
+  color: slateblue;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
+.parent {
+  font-weight: bold;
+  color: slateblue;
+}
+
+.parent > div {
+  color: olivedrab;
+}
+/* div 마지막 자식만 부모 색상 사용 */
+.parent > div:last-child {
+  /* color: slateblue; */
+  color: inherit;
+}

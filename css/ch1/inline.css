@@ -1,10 +1,22 @@
-h1 {
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
   background-color: red;
-  width: 150px;
-  height: 50px;
+  /* display: inline; */
+  width: 500px;
+  /* padding: 10px; */
+  padding: 10px 20px 15px;
+  /* 값 부여 : 시계방향 위 부터 , 없다면 마주보는 방향 px*/
+  /* height: 50px; */
+  margin: 20px;
 }
 span {
   background-color: dodgerblue;
+  /* display: inline block; */
   width: 200px;
-  height: 300px;
+  padding: 10px;
+  /* height: 300px; */
+  margin: 20px;
 }

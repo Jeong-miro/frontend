@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./table.css" />
+  </head>
+
+  <body>
+    <!-- 테이블
+        tr : table row (행)
+        td : column (열) , 왼쪽정렬
+        th : column (열) , 가운데 정렬, 진하게
+    -->
+    <table>
+      <caption>
+        시간표
+      </caption>
+      <tr>
+        <td>이름</td>
+        <td>주소</td>
+        <td>전화번호</td>
+      </tr>
+      <tr>
+        <th>홍길동</th>
+        <th>서울 종로구</th>
+        <th>010-1234-5678</th>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th></th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+      </tr>
+      <!-- &nbsp; : 공백 -->
+      <tr>
+        <th>8:00</th>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th>9:00</th>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th>1행 1열</th>
+        <th>1행 2열</th>
+        <th>1행 3열</th>
+      </tr>
+      <tr>
+        <td rowspan="2">2행 1열</td>
+        <td>2행 2열</td>
+        <td>2행 3열</td>
+      </tr>
+      <tr>
+        <td>3행 2열</td>
+        <td>3행 3열</td>
+      </tr>
+      <tr>
+        <td colspan="3">4행 1열</td>
+      </tr>
+    </table>
+  </body>
+</html>

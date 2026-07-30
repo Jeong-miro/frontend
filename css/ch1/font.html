@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <!-- <style>
+    /* @imort : 다른 css 포함할 때 사용 */
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+  </style> -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Jua&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+  </style>
+  <style>
+    html {
+      font-size: 16px;
+      font-family: Jua, "Arial Narrow", Arial, sans-serif;
+    }
+    p {
+      font-style: normal;
+      font-weight: 400;
+      /* font-size: medium; */
+    }
+    div {
+      font-size: 2em;
+    }
+    p.line {
+      text-decoration: overline underline line-through;
+    }
+    .transform {
+      text-transform: capitalize;
+    }
+    .shadow {
+      /* x,y좌표 (흐림) 색상 */
+      text-shadow:
+        /* 오른쪽  */
+        1px 0 white,
+        /* 왼쪽 */ -1px 0 white,
+        /* 아래 */ 0 1px white,
+        /* 위 */ 0 -1px white,
+        1px 1px white,
+        1px -1px white,
+        -1px 1px white,
+        -1px 1px white,
+        /* 바깥쪽 자두색 */ 2px 0 plum,
+        -2px 0 plum,
+        0 2px plum,
+        0 -2px plum,
+        2px 1px plum,
+        -2px 1px plum,
+        1px 2px plum,
+        1px -2px plum,
+        2px -1px plum,
+        -2px -1px plum,
+        -1px 2px plum,
+        -1px -2px plum,
+        2px 2px plum,
+        2px -2px plum,
+        -2px 2px plum,
+        -2px -2px plum;
+    }
+    .shadow2 {
+      text-shadow: 2px 2px lightgrey;
+    }
+    .align {
+      /* text-align: justify; */
+      text-indent: 1em;
+      /* word-spacing: -2px; */
+      line-height: 1.5em;
+    }
+
+    .open-sans-text {
+      font-family: "Open Sans", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings: "wdth" 100;
+    }
+  </style>
+  <body>
+    <!-- 
+    글자(font-*), 텍스트 스타일
+    font-style : 기울임(oblique,italic)
+    font-weight: 굵기(기본값 400)
+    font-size : 글자크기(px, em, rem, %)
+        em : 부모요소의 크기에 비례해서 표현
+    기본 크기 16px
+    font-family : 사용할 글꼴 지정
+
+    
+    텍스트 스타일(text-*)
+    text-decoration
+    text-shadow
+    text-align
+    text-indent : 양수(들여쓰기), 음수(내어쓰기)
+
+    간격
+    자간 : letter-spacing
+    단어간격 :word-spacing
+
+
+    줄높이 
+    line-height : 1.5em 주로 사용 1em=16px (기본값)
+
+
+    -->
+    <p>서체 스타일과 굵기</p>
+    바깥
+    <div>
+      중간
+      <div>안쪽</div>
+    </div>
+    <p class="line">텍스트 데코레이션</p>
+    <div class="transform">HTML & CSS Programming is fun!</div>
+    <div class="shadow">text-shadow를 사용하면 텍스트에 그림자 적용</div>
+    <div class="shadow2">text-shadow를 사용하면 텍스트에 그림자 적용</div>
+    <p class="align">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga exercitationem sit, eos quis molestiae eum deserunt
+      consectetur repudiandae in tempora assumenda porro id magni libero deleniti adipisci ea ipsum quidem tempore unde
+      a itaque, debitis tenetur! Nobis, nesciunt? Neque doloribus enim possimus sapiente ipsam libero quis sequi
+      perferendis atque omnis.
+    </p>
+  </body>
+</html>
