@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* topnav : flex, 배경색 #333 */
+
+.topnav {
+  display: flex;
+  background-color: #333;
+}
+
+/* topnav a : 
+    글자색:#f2f2f2
+    가운데정렬,안쪽여백 : 상하 14 좌우 16
+    밑줄 제거
+*/
+.topnav a {
+  color: #f2f2f2;
+  text-align: center;
+  /* margin: 0 auto; */
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* topnav a 마우스 오버가 되면
+    배경색 #ddd / 글자색 black
+*/
+.topnav a:hover {
+  color: black;
+  background-color: #ddd;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav {
+    flex-direction: column;
+  }
+}

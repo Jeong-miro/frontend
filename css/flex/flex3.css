@@ -31,7 +31,7 @@
 
   2) flex 자식에게 부여하는 속성
   -order : 숫자가 높을수록 우선순위가 뒤로 밀림
-  -flex
+  -flex : 1 1 0
       -flex-grow : 요소의 증가 비율 설정
       -flex-shrink : 요소의 감소 비율 설정
       -flex-basis : 0

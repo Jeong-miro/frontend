@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#wrapper {
+  display: grid;
+  gap: 12px;
+}
+
+#wrapper > * {
+  background-color: lightblue;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 1em;
+  color: royalblue;
+}
+
+footer {
+  height: 200px;
+  /* inline/float/flex */
+}
+/* nav li 옆으로 배치 */
+nav li {
+  display: inline-block;
+  margin-right: 1em;
+  color: #333;
+}
+
+main div {
+  margin: 1em;
+  padding: 1em;
+  background-color: yellow;
+  height: 67px;
+  color: #333;
+  font-weight: normal;
+}
+
+/*
+  position : absolute / 부모 header 
+#menu : 화면 오른쪽 / top:0 right:0
+  안쪽 여백 : 상하 0 좌우 1em
+  높이 64px
+  줄높이 64px
+  글자색 #333
+*/
+header {
+  position: relative;
+  min-height: 80px;
+}
+
+#menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  height: 64px;
+  line-height: 64px;
+  color: #333;
+  cursor: pointer;
+  /* 마우스 가져다대면 손 모양 */
+}
+
+@media screen and (max-width: 768px) {
+  /* nav 영역은 안보이게 */
+  nav {
+    display: none;
+  }
+  /* menu에 마우스를 올리면 숨겼던 nav 가
+  보이도록
+  */
+  #menu:hover + nav {
+    display: block;
+    text-align: right;
+  }
+  #menu:hover + nav li {
+    display: block;
+    margin: 0.6em;
+  }
+}
+
+/* min-width :769
+   pc 화면: #menu 숨기기
+   aside content (200px, 나머지 다 가져가기)
+   header, footer 전체 다 사용하도록
+*/
+
+@media screen and (min-width: 769px) {
+  #menu {
+    display: none;
+  }
+  #wrapper {
+    grid-template-columns: 200px 1fr;
+  }
+  header,
+  footer {
+    grid-column: 1 / -1;
+    grid-row:;
+  }
+}

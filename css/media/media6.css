@@ -1,0 +1,52 @@
+/* flex 구조 */
+/* 기본 나머지 해상도 */
+#container {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background: #fff;
+}
+
+.card img {
+  width: 300px;
+  height: auto;
+  display: block;
+}
+
+.words {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+
+  flex: 1;
+}
+@media screen and (min-width: 768px) {
+  #container {
+    flex-direction: row;
+    width: 550px;
+    height: 250px;
+  }
+  .card img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+  }
+  .words {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 1720px) {
+  #container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(9, 100, 160);
+}
+
+#container {
+  width: 320px;
+  margin: 50px auto;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 500px;
+  margin: 20px 10px;
+  border: 1px solid #0f0f0f33;
+  background-color: #fff;
+}
+
+.words {
+  position: absolute;
+  left: 100px;
+  top: 300px;
+  margin: 20px 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+@media screen and (min-width: 1720px) {
+  /* #container : 너비 1710 */
+  #container {
+    width: 1710px;
+    margin: 50px auto;
+  }
+  .card {
+    position: relative;
+    float: left;
+    width: 550px;
+    height: 250px;
+    margin: 10px;
+    border: 1px solid #0f0f0f33;
+    background-color: #fff;
+  }
+
+  .words {
+    position: absolute;
+    left: 300px;
+    top: 50px;
+    width: 200px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) and(max-width: 1719px) {
+  #container {
+    width: 570px;
+    margin: 50px 0;
+  }
+  .card {
+    position: relative;
+    width: 550px;
+    height: 250px;
+    margin: 20px 10px;
+    border: 1px solid #0f0f0f33;
+    background-color: #fff;
+  }
+
+  .words {
+    position: absolute;
+    left: 310px;
+    top: 50px;
+    width: 200px;
+    /* text-align: center; */
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
