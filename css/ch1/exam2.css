@@ -1,0 +1,87 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* body font적용:
+배경색 : #f2f2f2
+*/
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* login-box: w350, margin : 100 auto
+안쪽여백 30 테두리, 배경색
+*/
+.login-box {
+  width: 350px;
+  margin: 100px auto;
+  padding: 30px;
+  border: 1px solid lightgray;
+  background-color: white;
+
+  position: relative;
+}
+
+/* h1 가운데 정렬, 글자크기 30
+바깥아래쪽여백30
+*/
+h1 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+/* label : display
+글자크기 15 바깥아래쪽여백8
+*/
+label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+/* input : w:100%
+글자크기 16 바깥아래쪽여백20
+안쪽여백 10
+*/
+input {
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+/* button: w100% 안쪽여백12 테두리
+배경색 글자색 글자크기18
+*/
+button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #0066cc;
+  font-size: 18px;
+  background-color: #0066cc;
+  color: white;
+}
+
+/* join : 바깥위여백20 가운데정렬
+글자크기14 글자색상 gray
+*/
+.join {
+  margin-top: 20px;
+  text-align: center;
+  color: gray;
+  font-size: 14px;
+}
+/* new:  */
+.new {
+  position: absolute;
+  background-color: red;
+  right: -10px;
+  top: -10px;
+
+  padding: 5px 10px;
+  border: 1px solid red;
+  color: white;
+}

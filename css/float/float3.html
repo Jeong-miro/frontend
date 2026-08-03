@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* box : 흰색배경 */
+      .box {
+        background-color: white;
+      }
+      /* 왼쪽화살표 : 왼쪽 */
+      .box img:first-child {
+        float: left;
+      }
+      /* 오른쪽화살표 : 오른쪽 */
+      .box img:nth-child(2) {
+        float: right;
+      }
+      /* p 영역은 따라올라오지 않게 */
+      /* section::after {
+        content: "";
+        clear: both;
+        display: block;
+      } */
+      p {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body></body>
+  <div class="box">
+    <img src="../data/left-arrow.png" alt="" />
+    <img src="../data/right-arrow.png" alt="" />
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi hic aut quam, animi, architecto est ipsum
+      distinctio nemo, excepturi cum ullam aliquid. Nemo ipsa vitae ullam aut. Eum, eveniet temporibus?
+    </p>
+  </div>
+</html>
