@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="test">
+      <p>반갑습니다.</p>
+    </div>
+    <script>
+      const p = "<p>안녕하세요</p>";
+
+      // 기준.insertAdjacentHTML(position, 삽입할태그);
+      // afterbegin : 기준태그 첫번째 자식
+      // afterend : 기준태그 다음 형제요소 (닫는태그 아래)
+      // beforbegin : 기준태그의 이전 형제요소 (여는태그 위)
+      // beforeend : 기준태그 마지막 자식
+
+      // document.getElementById("test");
+      // document.querySelector("#test").insertAdjacentHTML("afterbegin", p);
+      //document.querySelector("#test").insertAdjacentHTML("afterend", p);
+      //document.querySelector("#test").insertAdjacentHTML("beforebegin", p);
+      document.querySelector("#test").insertAdjacentHTML("beforeend", p);
+
+      const img = '<img src="../css/data/left-arrow.png" alt="화살표">';
+      document.body.insertAdjacentHTML("beforeend", img);
+    </script>
+  </body>
+</html>

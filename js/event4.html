@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table {
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="outside">
+      <tr>
+        <td id="t1">one</td>
+      </tr>
+      <tr>
+        <td id="t2">two</td>
+      </tr>
+      <script>
+        //table click 시 two, three 번갈아가면서 나오도록
+        const outside = document.getElementById("outside");
+        outside.addEventListener("click", () => {
+          //t2 의 text 가 two or three innerText
+          const t2 = document.getElementById("t2");
+          // const t2 = document.querySelector("#t2");
+          const isnoderThree = t2.textContent === "three";
+          t2.textContent = isnoderThree ? "two" : "three";
+        });
+      </script>
+    </table>
+  </body>
+</html>

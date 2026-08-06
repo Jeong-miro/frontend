@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .navbar {
+        background-color: lightgray;
+        height: 80px;
+      }
+      .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      span {
+        cursor: pointer;
+      }
+      .navbar-brand {
+        width: 100px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .badge {
+        padding: 10px;
+        margin-right: 20px;
+        border-radius: 10px;
+        background-color: black;
+        color: white;
+      }
+      .bg-light {
+        color: black;
+        background-color: white;
+      }
+      .bg-dark {
+        background-color: rgb(27, 25, 25);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark">Dark🔄️</span>
+      </div>
+    </nav>
+    <script>
+      // Dark🔄️ <=> Light🔄️ (클릭이 되면)
+      // body background 변경
+      // 클래스명 이용(classList) => add(), replace(), toggle(), remove()
+
+      const dark = document.querySelector(".badge");
+      // const body = document.querySelector("body");
+      const body = document.body;
+
+      // dark.addEventListener("click", () => {
+      //   if (dark.classList.contains === "bg-dark") {
+      //     dark.classList.replace("bg-dark", "bg-light");
+      //     body.classList.add("bg-dark");
+      //     dark.textContent = "Dark🔄️";
+      //   } else if (dark.className === "badge bg-light") {
+      //     dark.classList.replace("bg-light", "bg-dark");
+      //     body.classList.remove("bg-dark");
+
+      //     dark.textContent = "Light🔄️";
+      //   }
+      // });
+      const badge = document.querySelector(".badge");
+      badge.addEventListener("click", () => {
+        if (badge.classList.contains("bg-dark")) {
+          badge.classList.replace("bg-dark", "bg-light");
+          badge.innerHTML = "Light🔄️";
+          body.classList.add("bg-dark");
+        } else {
+          badge.classList.replace("bg-light", "bg-dark");
+          badge.innerHTML = "Dark🔄️";
+          body.classList.remove("bg-dark");
+        }
+      });
+    </script>
+  </body>
+</html>

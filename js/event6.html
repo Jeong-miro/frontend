@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Light</h1>
+    <div>
+      <img src="./data/pic_bulboff.gif" alt="" />
+      <button type="button">switch</button>
+    </div>
+    <script>
+      // button => click / addevent
+      //   const buttons = document.querySelectorAll("button");
+      //   console.log(buttons);
+      //   buttons.forEach((button) => {
+      //     button.addEventListener("click", (e) => {
+      //       console.log(button);
+      //       button.textContent;
+      //     });
+      //   });
+      // 이벤트 버블링 => 이벤트 위임
+      const div = document.querySelector("button");
+      // img 찾기
+      const img = document.querySelector("img");
+      let mode = true;
+      div.addEventListener("click", (e) => {
+        if (mode) {
+          img.src = "./data/pic_bulbon.gif";
+          mode = false;
+        } else {
+          img.src = "./data/pic_bulboff.gif";
+          mode = true;
+        }
+      });
+    </script>
+  </body>
+</html>

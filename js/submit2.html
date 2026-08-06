@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .text-danger {
+        color: red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" method="get">
+      <div>
+        <label for="userid">아이디</label>
+        <input type="text" name="userid" id="userid" />
+      </div>
+      <div>
+        <label for="password">비밀번호</label>
+        <input type="text" name="password" id="password" />
+      </div>
+      <div>
+        <label for="tel">전화번호</label>
+        <input type="text" name="tel" id="tel" />
+      </div>
+      <button type="submit">전송</button>
+    </form>
+    <script>
+      // submit 이벤트
+      // 검증 alert()
+
+      const user = document.querySelectorAll("input");
+      console.log(user);
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const form = e.target;
+
+        if (form.userid.value === "") {
+          alert("아이디 입력");
+          form.userid.focus();
+          return;
+        } else if (form.password.value === "") {
+          alert("비밀번호 입력");
+          form.password.focus();
+          return;
+        } else if (form.tel.value === "") {
+          alert("전화번호 입력");
+          form.tel.focus();
+          return;
+        }
+        form.submit();
+      });
+    </script>
+  </body>
+</html>

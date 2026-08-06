@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 500px;
+        height: 300px;
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <div class="color">
+      <input type="radio" name="color" id="blue" value="blue" /> 파랑
+      <input type="radio" name="color" id="red" value="red" /> 빨강
+    </div>
+    <script>
+      // 둘 중 하나 선택시 value 가져와서 #box background 배경색 변경
+      // radio 가 click 이 되면
+      const box = document.querySelector("#box");
+      //   const blue = document.getElementById("blue");
+      //   const red = document.getElementById("red");
+      //   이벤트랑 대상 요소 연결 addEventListener
+      //   blue.addEventListener("click", () => (box.style.backgroundColor = "blue"));
+      //   red.addEventListener("click", () => (box.style.backgroundColor = "red"));
+
+      //const rdos = document.querySelectorAll("[name='color']");
+      //   rdos[0].addEventListener("click", () => {
+      //     box.style.backgroundColor = rdos[0].value;
+      //   });
+      //   rdos[1].addEventListener("click", () => {
+      //     box.style.backgroundColor = rdos[1].value;
+      //   });
+      //   rdos.forEach((rdo, idx) => {
+      //     rdo.addEventListener("click", (e) => {
+      //       //  box.style.backgroundColor = rdo.value;
+      //       // e : event 대상 객체를 지칭
+      //       console.log(e.target);
+      //       box.style.backgroundColor = e.target.value;
+      //     });
+      //   });
+
+      // 이벤트 위임
+      const color = document.querySelector(".color");
+      color.addEventListener("click", (e) => {
+        // console.log("e.currenttarget", e.target);
+        // console.log(e.currentTarget);
+        box.style.backgroundColor = e.target.value;
+      });
+    </script>
+  </body>
+</html>

@@ -63,5 +63,23 @@ let sumLetArr = [...varArr1, ...varArr2];
 console.log(sumLetArr);
 
 const fruits = new Array("사과", "망고", "바나나", "수박");
-fruits.forEach((i) => console.log(i));
+//fruits.forEach((i) => console.log(i));
+fruits.forEach((item, idx) => console.log(idx, item));
 console.log(fruits);
+
+// 배열
+const array1 = [];
+array1.forEach(() => {});
+array1.forEach(function () {});
+
+const array2 = [15, 6, 9, 13, 22, 27];
+// array2 에서 20보다 큰 요소를 찾기(첫번째 요소)
+console.log(array2.find((item) => item > 20));
+console.log(array2.findIndex((item) => item > 20));
+
+// map, filter
+const result2 = array2.map((x) => x * 2);
+console.log(result2);
+
+const result3 = array2.filter((item) => item > 20);
+console.log(result3);
