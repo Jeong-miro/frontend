@@ -2,7 +2,7 @@
 // Question : question 문자열, choices [], answer
 interface Question {
   question: string;
-  choices: [];
+  choices: string[];
   answer: number;
 }
 // type 정의
