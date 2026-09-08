@@ -5,22 +5,25 @@ const Counter = () => {
 
   // set* 함수 : 변수값을 변경하는데 사용, 화면을 리페인팅 하라는 명령
   const [count, setCount] = useState(0);
-  const increase = (e) => {
-    setCount(count + 1);
-    console.log(count);
-  };
-  const decrease = (e) => {
-    setCount(count - 1);
-    console.log(count);
-  };
+  // const increase = (e) => {
+  //   setCount(count + 1);
+  //   console.log(count);
+  // };
+  // const decrease = (e) => {
+  //   setCount(count - 1);
+  //   console.log(count);
+  // };
+
+  //const increase = () => setCount(count + 1);
+  const decrease = () => setCount(count - 1);
 
   return (
-    <div>
-      <h1>{count}</h1>
-      <button type="button" className="increase" onClick={increase}>
+    <div className="grid grid-cols-2 gap-4 w-sm m-3==\\\">
+      <h1 className="text-3xl col-sapn-2">{count}</h1>
+      <button type="button" className="increase p-4 bg-orange-500" onClick={() => setCount(count + 1)}>
         +
       </button>
-      <button type="button" className="decrease" onClick={decrease}>
+      <button type="button" className="decrease p-4 bg-red-500 " onClick={decrease}>
         -
       </button>
     </div>
