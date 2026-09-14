@@ -38,15 +38,19 @@ const MoveBox = ({ initPosition }: { initPosition: number }) => {
     return () => {
       console.log('"useEffect 실행 ==> 4. 컴포넌트 언마운트"');
     };
-  });
+  }, [leftCount]);
 
   console.log("return 실행 ==> 2. 렌더링(return 문)");
   return (
     <div>
       <h4>함수형 컴포넌트 생명주기</h4>
       <div style={boxStyle}>{leftCount}</div>
-      <button onClick={moveLeft}>좌측이동</button>
-      <button onClick={moveRight}>우측이동</button>
+      <button onClick={moveLeft} className="border bg-gray-100 p-2">
+        좌측이동
+      </button>
+      <button onClick={moveRight} className="border bg-gray-100 p-2">
+        우측이동
+      </button>
     </div>
   );
 };
