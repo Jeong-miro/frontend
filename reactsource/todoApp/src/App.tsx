@@ -8,6 +8,10 @@ import { initialTodos, type Todo, type TodoCreate } from "./types/todo";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
+
+  // 상단의 "전체","완료","미완료" 보관
+  const [completedFilter, setCompletedFilter] = useState<boolean | null>(null);
+  const filteredTodos = completedFilter === null ? todos : todos.filter((todo) => todo.completed === completedFilter);
   //id 값
   const nextId = useRef(4);
 
@@ -43,8 +47,9 @@ function App() {
   };
 
   // 완료,미완료 선택부분
-  const getodosByCompleted = (completed: boolean) => {
-    todos.filter((todo) => (todo.completed ? completed : !completed));
+  const getodosByCompleted = (completed: string) => {
+    //Boolean('true') true
+    setCompletedFilter(completed === "" ? null : completed === "true");
   };
 
   // todos 값 확인
@@ -57,7 +62,7 @@ function App() {
       <TodoTeamplate>
         <TodoHeader getodosByCompleted={getodosByCompleted} />
         <TodoInsert onInsert={onInsert} />
-        <TodoList todos={todos} onDelete={onDelete} onUpdate={onUpdate} />
+        <TodoList todos={filteredTodos} onDelete={onDelete} onUpdate={onUpdate} />
       </TodoTeamplate>
     </>
   );

@@ -1,7 +1,7 @@
 // import React from "react";
 // import type { Header } from "../types/todo";
 
-function TodoHeader({ getodosByCompleted }) {
+function TodoHeader({ getodosByCompleted }: { getodosByCompleted: (completed: string) => void }) {
   console.log("TodoHeader rendered");
   return (
     <div className="flex p-3">
