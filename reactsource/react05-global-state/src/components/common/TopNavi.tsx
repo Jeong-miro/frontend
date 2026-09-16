@@ -7,7 +7,9 @@ const TopNavi = () => {
       <NavLink to="/use-reducer1">useReducer1</NavLink>
       <NavLink to="/use-reducer2">useReducer2</NavLink>
       <NavLink to="/use-reducer3">useReducer3</NavLink>
-      <NavLink to="/use-context">useContext</NavLink>
+      <NavLink to="/use-reducer">todoReducer</NavLink>
+      <NavLink to="/use-context1">useContext1</NavLink>
+      <NavLink to="/use-context2">useContext2</NavLink>
     </nav>
   );
 };
