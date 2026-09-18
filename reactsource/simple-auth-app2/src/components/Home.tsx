@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../common/AuthContext";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../hooks";
 
 const Home = () => {
-  const { isLoggedIn } = useAuth();
-  const navigate = useNavigate();
+  const auth = useAppSelector((auth) => auth.auth);
+
   return (
     <main className="min-h-[calc(100vh-65px)] bg-gray-50">
       <section className="mx-auto flex max-w-5xl flex-col items-center px-6 py-24 text-center">
@@ -37,7 +37,7 @@ const Home = () => {
           </Link>
 
           {/* 로그인 정보가 있다면 */}
-          {isLoggedIn && (
+          {auth.id && (
             <Link
               to="/mypage"
               className="rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-gray-700 transition hover:bg-gray-100"

@@ -1,10 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../common/AuthContext";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { logout } from "../authSlice";
 
 const Navigation = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     `transition ${isActive ? "font-semibold text-blue-600" : "text-gray-600 hover:text-blue-600"}`;
-  const { isLoggedIn, logout } = useAuth();
+
+  const auth = useAppSelector((auth) => auth.auth);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   return (
     <header className="border-b border-gray-200 bg-white">
@@ -20,14 +23,14 @@ const Navigation = () => {
             홈
           </NavLink>
           {/* 로그인 정보가 있을때만 보여주기 */}
-          {isLoggedIn ? (
+          {auth.id ? (
             <>
               <NavLink to="/mypage" className={getLinkClass}>
                 마이페이지
               </NavLink>
               <button
                 onClick={() => {
-                  logout();
+                  dispatch(logout());
                   navigate("/");
                 }}
                 className="rounded-lg bg-gray-900 px-4 py-2 font-medium text-white transition hover:bg-gray-700"

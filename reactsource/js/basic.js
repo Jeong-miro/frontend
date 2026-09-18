@@ -65,3 +65,6 @@ const result2 = age >= 20 ? "성인" : "미성년자";
 console.log(result2);
 
 //&&
+
+//콜백함수
+//fetch()

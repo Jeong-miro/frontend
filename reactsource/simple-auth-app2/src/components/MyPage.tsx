@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../common/AuthContext";
-//import { useAuth } from "../common/AuthContext";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import { logout } from "../authSlice";
 
 const MyPage = () => {
-  const { id, logout } = useAuth();
+  const auth = useAppSelector((auth) => auth.auth);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   return (
@@ -23,7 +24,7 @@ const MyPage = () => {
           <div className="flex flex-col items-center gap-6 sm:flex-row">
             {/* Profile */}
             <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-blue-100 text-2xl font-bold text-blue-600">
-              {/* 사용자 이름의 첫글자 */} {id.charAt(0)}
+              {/* 사용자 이름의 첫글자 */} {auth.id.charAt(0)}
             </div>
 
             {/* User Info */}
@@ -31,7 +32,7 @@ const MyPage = () => {
               <p className="text-sm text-gray-400">로그인 사용자</p>
 
               <h3 className="mt-1 text-2xl font-bold text-gray-900">
-                {/* 사용자 이름 */} {id}
+                {/* 사용자 이름 */} {auth.id}
               </h3>
 
               <p className="mt-1 text-sm text-gray-500">현재 로그인되어 있습니다.</p>
@@ -40,7 +41,7 @@ const MyPage = () => {
             {/* Logout */}
             <button
               onClick={() => {
-                logout();
+                dispatch(logout());
                 navigate("/");
               }}
               className="rounded-lg bg-gray-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-gray-700"
