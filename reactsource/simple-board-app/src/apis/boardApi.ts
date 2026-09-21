@@ -39,3 +39,8 @@ export const commentBoard = async (id: string) => {
   const response = await axios.get(`${url}/${id}/comments`);
   return response.data;
 };
+
+export const getBoardComments = async (id: string) => {
+  const response = await axios.get(`${url}/${id}/comments`);
+  return response.data;
+};

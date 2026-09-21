@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { commentBoard, deleteBoard } from "../apis/boardApi";
+import { deleteBoard } from "../apis/boardApi";
 import useBoard from "../hooks/useBoard";
 
 const BoardDetail = () => {
@@ -7,7 +7,7 @@ const BoardDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   // 하나 가져와서 화면에 보여주기
-  const { comm, board, loading } = useBoard(id);
+  const { board, loading } = useBoard(id);
 
   const handleRemove = async (id: string | undefined) => {
     if (!id) return;
@@ -82,7 +82,7 @@ const BoardDetail = () => {
         </div>
       </article>
       {/* 댓글 보여주기 posts/${id}/comments*/}
-      <div>
+      {/* <div>
         <ul>
           <li className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50">댓글</li>
           {comm?.map((comment) => (
@@ -90,10 +90,19 @@ const BoardDetail = () => {
               <div className="mb-1 text-sm font-bold text-slate-900">{comment.name}</div>
               <div className="mb-3 text-xs text-slate-500">{comment.email}</div>
               <p className="text-sm leading-6 text-slate-700">{comment.body}</p>
+            </li> 
+          ))}
+          
+        </ul> */}
+      <section className="rounded-xl border border-slate-200 bg-white">
+        <ul>
+          {board?.comments.map((comment) => (
+            <li key={comment.id}>
+              {comment.body} - {comment.name}
             </li>
           ))}
         </ul>
-      </div>
+      </section>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { type comm, type Board } from "../Types/board";
-import { commentBoard, getBoard } from "../apis/boardApi";
+import { type BoardComment } from "../Types/board";
+import { getBoard, getBoardComments } from "../apis/boardApi";
 
 const useBoard = (id: string | undefined) => {
-  const [comm, setComm] = useState<comm[] | null>(null);
-  const [board, setBoard] = useState<Board | null>(null);
+  //const [comm, setComm] = useState<comm[] | null>(null);
+  const [board, setBoard] = useState<BoardComment | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchData = async () => {
@@ -12,9 +12,16 @@ const useBoard = (id: string | undefined) => {
         if (!id) return;
         // 서버로 데이터 요청
         const serverData = await getBoard(id);
-        const commData = await commentBoard(id);
-        setBoard(serverData);
-        setComm(commData);
+        const serverCommentData = await getBoardComments(id);
+        //const commData = await commentBoard(id);
+        setBoard({
+          userId: serverData.userId,
+          id: serverData.id,
+          title: serverData.title,
+          body: serverData.body,
+          comments: serverCommentData,
+        });
+        //setComm(commData);
       } catch (error) {
         console.log(error);
       } finally {
@@ -23,7 +30,7 @@ const useBoard = (id: string | undefined) => {
     };
     fetchData();
   }, [id]);
-  return { comm, board, loading };
+  return { board, loading };
 };
 
 export default useBoard;
