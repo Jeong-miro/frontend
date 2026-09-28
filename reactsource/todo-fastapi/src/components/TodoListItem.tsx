@@ -5,13 +5,14 @@ import type { TodoProps } from "../types/todo";
 const TodoListItem = ({ todo, onDelete, onUpdate }: TodoProps) => {
   // todo 분해
   const { id, title, completed, important } = todo;
+
   console.log("TodoListItem rendered");
 
   // todo 의 completed 값 변경
   const [isCompleted, setIsCompleted] = useState(completed);
   const CheckboxIcon = isCompleted ? MdCheckBox : MdCheckBoxOutlineBlank;
 
-  // 빼기(<MdRemoveCircleOutline />)클릭 시 부모의 onDelete() 호출
+  // 빼기(MdRemoveCircleOutline) 클릭 시 부모의 onDelete() 호출
 
   return (
     <div className="flex items-center p-4 even:bg-gray-200">
@@ -24,10 +25,7 @@ const TodoListItem = ({ todo, onDelete, onUpdate }: TodoProps) => {
         />
         <div className={`ml-2 flex items-center ${completed ? "text-gray-400 line-through" : ""}`}>
           {important && <MdNotificationImportant className="mr-1 text-red-500" />}
-          <span>
-            {/* title 보여줄 곳 */}
-            {title}
-          </span>
+          <span>{title}</span>
         </div>
       </div>
       <div className="flex cursor-pointer items-center text-2xl text-red-300 hover:text-red-600">
