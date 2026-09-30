@@ -9,10 +9,19 @@ export type Todo = {
   update_at: Date;
 };
 
+export type TodoPageResponse = {
+  items: Todo[];
+  total: number;
+  total_pages: number;
+  page: number;
+  size: number;
+  completed: boolean | null;
+};
+
 // TodoList 타입
 export type TodosProps = {
   todos: Todo[];
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
   onUpdate: (id: number) => void;
 };
 

@@ -12,10 +12,14 @@ const url = "http://127.0.0.1:8000/todos";
 //   return response.data;
 // };
 
-export const getTodos = async (completedFilter: boolean | null) => {
+export const getTodos = async (completedFilter: boolean | null, page: number, size: number) => {
   // completedFilter null => {}
   // completedFilter t/f => {completed:completedFilter}
-  const params = completedFilter === null ? {} : { completed: completedFilter };
+  const params: { page: number; size: number; completed?: boolean | null } = { page, size };
+
+  if (completedFilter === null) {
+    params.completed = completedFilter;
+  }
 
   const response = await axios.get(`${url}/`, { params });
   return response.data;

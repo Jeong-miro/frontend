@@ -1,4 +1,10 @@
-function TodoHeader({ getTodosByCompleted }: { getTodosByCompleted: (completed: string) => void }) {
+function TodoHeader({
+  getTodosByCompleted,
+  completed,
+}: {
+  getTodosByCompleted: (completed: string) => void;
+  completed: boolean | null;
+}) {
   console.log("TodoHeader rendered");
   return (
     <div className="flex p-3">
@@ -8,6 +14,7 @@ function TodoHeader({ getTodosByCompleted }: { getTodosByCompleted: (completed: 
         <select
           name="completed"
           className="mx-2 rounded border border-gray-400"
+          value={completed === null ? "" : String(completed)}
           onChange={(e) => getTodosByCompleted(e.target.value)}
         >
           {[
