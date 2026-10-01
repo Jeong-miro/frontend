@@ -1,20 +1,20 @@
 import axios from "axios";
-import type { Board, BoardUpSert } from "../Types/board";
+import type { BoardUpSert } from "../Types/board";
 
-const url = "https://jsonplaceholder.typicode.com/posts";
-export const getBoards = async (limit: number = 10) => {
-  const response = await axios.get(`${url}?_limit=${limit}`);
+// fastapi router 랑 통신
+
+const url = "http://127.0.0.1:8000/boards";
+export const getBoards = async (page: number, size: number) => {
+  const response = await axios.get(`${url}`, { params: { page, size } });
   return response.data;
 };
 
-// https://jsonplaceholder.typicode.com/posts/3
 export const getBoard = async (id: string) => {
   const response = await axios.get(`${url}/${id}`);
   return response.data;
 };
 
 // 삽입
-
 export const postBoard = async (board: BoardUpSert) => {
   const response = await axios.post(`${url}`, board);
   return response.data;
