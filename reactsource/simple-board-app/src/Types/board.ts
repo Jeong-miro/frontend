@@ -11,12 +11,38 @@ export type BoardUpdate = {
   contents: string;
 };
 
+export type UserResponse = {
+  user_id: number;
+  name: string;
+};
+
+export type CommentResponse = {
+  comment_id: number;
+  body: string;
+  user_id: number;
+  user: UserResponse;
+  board_id: number;
+  created_at: string;
+};
+
+export type CommentCreate = {
+  body: string;
+  user_id: number;
+  board_id: number;
+};
+
+export type CommentUpdate = {
+  body: string;
+};
+
 export type BoardResponse = {
   id: number;
   title: string;
   contents: string;
-  user_id: string;
+  user_id: number;
   created_at: string;
+  user: UserResponse;
+  comments: CommentResponse[];
 };
 
 export type BoardPageResponse = {

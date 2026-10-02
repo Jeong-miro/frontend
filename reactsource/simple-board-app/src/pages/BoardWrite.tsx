@@ -1,19 +1,21 @@
-import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { postBoard } from "../apis/boardApi";
 import BoardForm from "../components/BoardForm";
-import type { Board, BoardUpSert } from "../Types/board";
-import { useNavigate } from "react-router-dom";
+import type { BoardCreate } from "../Types/board";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
+  const size = Number(searchParams.get("size")) || 10;
   // submit 시 서버 전송
-  const onSubmit = async (board: BoardUpSert) => {
+  const onSubmit = async (board: BoardCreate) => {
     try {
       const result = await postBoard(board);
       console.log(result);
 
       // 페이지 이동
-      navigate("/boards");
+      navigate(`/boards?page=${1}&size=${size}`);
     } catch (error) {
       console.log(error);
     }

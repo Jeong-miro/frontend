@@ -1,9 +1,14 @@
 import axios from "axios";
-import type { BoardUpSert } from "../Types/board";
+import type { BoardCreate, BoardUpdate, BoardUpSert } from "../Types/board";
 
 // fastapi router 랑 통신
 
 const url = "http://127.0.0.1:8000/boards";
+
+export const getRecentBoards = async () => {
+  const response = await axios.get(`${url}/recents`);
+  return response.data;
+};
 export const getBoards = async (page: number, size: number) => {
   const response = await axios.get(`${url}`, { params: { page, size } });
   return response.data;
@@ -15,7 +20,7 @@ export const getBoard = async (id: string) => {
 };
 
 // 삽입
-export const postBoard = async (board: BoardUpSert) => {
+export const postBoard = async (board: BoardCreate) => {
   const response = await axios.post(`${url}`, board);
   return response.data;
 };
@@ -28,7 +33,7 @@ export const deleteBoard = async (id: string) => {
 };
 
 // 수정
-export const putBoard = async (id: string, board: BoardUpSert) => {
+export const putBoard = async (id: string, board: BoardUpdate) => {
   const response = await axios.put(`${url}/${id}`, board);
   return response.data;
 };

@@ -1,9 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
-import { getBoards } from "../apis/boardApi";
-import { useEffect, useState } from "react";
-import type { Board } from "../Types/board";
-import useBoards from "../hooks/useBoards";
 import Pagination from "../components/Pagination";
+import useBoards from "../hooks/useBoards";
 
 const BoardList = () => {
   // ? 뒤 파라메터 값 가져오기
@@ -89,7 +86,10 @@ const BoardList = () => {
               <tr key={post.id} className="transition hover:bg-slate-50">
                 <td className="px-6 py-5 text-center text-slate-400">{post.id}</td>
                 <td className="px-6 py-5">
-                  <Link to={`/boards/${post.id}`} className="font-medium text-slate-800 hover:text-indigo-600">
+                  <Link
+                    to={`/boards/${post.id}?page=${currentPage}&size=${size}`}
+                    className="font-medium text-slate-800 hover:text-indigo-600"
+                  >
                     {post.title}
                   </Link>
                 </td>
