@@ -13,13 +13,13 @@ export const postComment = async (comment: CommentCreate) => {
 
 // 삭제
 
-export const deleteComment = async (id: string) => {
+export const deleteComment = async (id: number) => {
   const response = await axios.delete(`${url}/${id}`);
   return response.data;
 };
 
 // 수정
-export const putComment = async (id: string, comment: CommentUpdate) => {
+export const putComment = async (id: number, comment: CommentUpdate) => {
   const response = await axios.put(`${url}/${id}`, comment);
   return response.data;
 };

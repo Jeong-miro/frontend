@@ -2,6 +2,8 @@ import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { deleteBoard } from "../apis/boardApi";
 import useBoard from "../hooks/useBoard";
 import ReplyComp from "../components/ReplyComp";
+import { deleteComment, postComment, putComment } from "../apis/commentApi";
+import type { CommentCreate } from "../Types/board";
 
 const BoardDetail = () => {
   // 주소줄에 있는 id 가져오기
@@ -28,6 +30,52 @@ const BoardDetail = () => {
     }
   };
 
+  // 댓글 삭제
+  const handleCommentRemove = async (commentId: number) => {
+    if (!confirm("댓글을 삭제하시겠습니까?")) {
+      return;
+    }
+
+    try {
+      const result = await deleteComment(commentId);
+      console.log(result);
+
+      // 현재 게시물 다시 읽어오기
+      refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 댓글 등록
+  const handleCommentSubmit = async (commentContent: string) => {
+    // id 가 undefind 라면 (parseInt)
+    if (!id) {
+      return;
+    }
+
+    try {
+      const comment: CommentCreate = {
+        user_id: 1,
+        board_id: parseInt(id),
+        body: commentContent,
+      };
+
+      const result = await postComment(comment);
+      console.log(result);
+      refresh();
+    } catch (error) {}
+  };
+
+  // 댓글 수정
+  const handleCommentEdit = async (commentId: number, editContent: string) => {
+    try {
+      const result = await putComment(commentId, { body: editContent });
+      console.log(result);
+      refresh();
+    } catch (error) {}
+  };
+
   if (loading) {
     return <p>Loading....</p>;
   }
@@ -46,7 +94,7 @@ const BoardDetail = () => {
           <h1 className="text-2xl font-bold">{board.title}</h1>
 
           <div className="mt-4 flex items-center gap-4 text-sm text-slate-400">
-            <span className="font-medium text-slate-600">{board.user_id}</span>
+            <span className="font-medium text-slate-600">{board.user.name}</span>
             <span>2026.09.17 14:32</span>
             <span>조회 42</span>
           </div>
@@ -93,7 +141,12 @@ const BoardDetail = () => {
         </div>
       </article>
       {/* 댓글 보여주기 posts/${id}/comments*/}
-      <ReplyComp comments={board.comments} />
+      <ReplyComp
+        comments={board.comments}
+        handleCommentRemove={handleCommentRemove}
+        handleCommentSubmit={handleCommentSubmit}
+        handleCommentEdit={handleCommentEdit}
+      />
     </div>
   );
 };
