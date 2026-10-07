@@ -51,6 +51,8 @@ export type BoardPageResponse = {
   page: number;
   size: number;
   total_pages: number;
+  criteria: string;
+  keyword: string;
 };
 
 export type Board = {

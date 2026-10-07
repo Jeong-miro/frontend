@@ -1,6 +1,12 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 const AppLayout = () => {
+  // react-router-dom 을 이용해 경로 설정했기 때문에
+  //
+  const navigate = useNavigate();
+  const { isLoggedIn, logout } = useAuth();
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       {/* Header */}
@@ -28,10 +34,21 @@ const AppLayout = () => {
             >
               소개
             </NavLink>
-
-            <button className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50">
-              로그인
-            </button>
+            {!isLoggedIn ? (
+              <button
+                onClick={() => navigate("/users/signin")}
+                className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50 cursor-pointer"
+              >
+                로그인
+              </button>
+            ) : (
+              <button
+                onClick={logout}
+                className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50 cursor-pointer"
+              >
+                로그아웃
+              </button>
+            )}
           </nav>
         </div>
       </header>

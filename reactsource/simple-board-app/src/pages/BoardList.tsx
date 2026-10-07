@@ -1,30 +1,59 @@
 import { Link, useSearchParams } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import useBoards from "../hooks/useBoards";
+import { useAuth } from "../common/AuthContext";
+import { useState } from "react";
 
 const BoardList = () => {
   // ? 뒤 파라메터 값 가져오기
+
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
   const size = Number(searchParams.get("size")) || 10;
+  const criParam = searchParams.get("criteria") || "tc";
+  const keyParam = searchParams.get("keyword") || "";
 
-  const { data, loading } = useBoards(currentPage, size);
+  const { data, loading } = useBoards(currentPage, size, criParam, keyParam);
   const { total, total_pages } = data;
 
+  const { isLoggedIn } = useAuth();
   // 화면에 보여줄 페이지 개수 제한
   const pageSize = 5;
   const startPage = Math.floor((currentPage - 1) / pageSize) * pageSize + 1;
   const endPage = Math.min(startPage + pageSize - 1, total_pages);
-  if (loading) {
-    return <p>Loading....</p>;
-  }
+
+  // 검색
+  const [searchForm, setSearchForm] = useState({ criteria: criParam, keyword: keyParam });
+  const { criteria, keyword } = searchForm;
+  const onSearchChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setSearchForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // 검색 버튼 클릭 시
+  const onSearchClick = () => {
+    setSearchParams({
+      page: "1",
+      size: String(size),
+      criteria,
+      keyword,
+    });
+  };
 
   const onPageChange = (page: number) => {
     setSearchParams({
       page: String(page),
       size: String(size),
+      criteria,
+      keyword,
     });
   };
+  if (loading) {
+    return <p>Loading....</p>;
+  }
 
   return (
     <div>
@@ -40,26 +69,42 @@ const BoardList = () => {
           <p className="mt-2 text-slate-500">다양한 이야기를 자유롭게 나눠보세요.</p>
         </div>
 
-        <Link
-          to="/boards/write"
-          className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
-        >
-          ✍️ 글쓰기
-        </Link>
+        {isLoggedIn && (
+          <Link
+            to="/boards/write"
+            className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
+          >
+            ✍️ 글쓰기
+          </Link>
+        )}
       </div>
 
       {/* Search */}
       <div className="mb-6 flex gap-2">
-        <select className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500">
-          <option>제목 + 내용</option>
-          <option>제목</option>
-          <option>작성자</option>
+        <select
+          value={criteria}
+          onChange={onSearchChange}
+          name="criteria"
+          className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500"
+        >
+          <option value={"tc"}>제목 + 내용</option>
+          <option value={"t"}>제목</option>
+          <option value={"w"}>작성자</option>
         </select>
 
         <div className="flex flex-1 overflow-hidden rounded-lg border border-slate-200 bg-white focus-within:border-indigo-500">
-          <input type="text" placeholder="검색어를 입력하세요" className="flex-1 px-4 py-3 text-sm outline-none" />
+          <input
+            value={keyword}
+            onChange={onSearchChange}
+            name="keyword"
+            type="text"
+            placeholder="검색어를 입력하세요"
+            className="flex-1 px-4 py-3 text-sm outline-none"
+          />
 
-          <button className="px-5 text-sm font-medium text-slate-600 hover:bg-slate-50">검색</button>
+          <button onClick={onSearchClick} className="px-5 text-sm font-medium text-slate-600 hover:bg-slate-50">
+            검색
+          </button>
         </div>
       </div>
 
@@ -94,7 +139,7 @@ const BoardList = () => {
                   </Link>
                 </td>
 
-                <td className="px-6 py-5 text-center text-slate-500">{post.user_id}</td>
+                <td className="px-6 py-5 text-center text-slate-500">{post.user.name}</td>
 
                 <td className="px-6 py-5 text-center text-slate-400">{post.created_at}</td>
 
