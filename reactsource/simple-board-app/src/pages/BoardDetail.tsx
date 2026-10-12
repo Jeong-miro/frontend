@@ -98,8 +98,8 @@ const BoardDetail = () => {
 
           <div className="mt-4 flex items-center gap-4 text-sm text-slate-400">
             <span className="font-medium text-slate-600">{board.user.name}</span>
-            <span>2026.09.17 14:32</span>
-            <span>조회 42</span>
+            <span>{board.created_at}</span>
+            <span>조회 {board.views}</span>
           </div>
         </div>
 

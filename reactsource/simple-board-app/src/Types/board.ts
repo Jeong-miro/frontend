@@ -41,6 +41,7 @@ export type BoardResponse = {
   contents: string;
   user_id: number;
   created_at: string;
+  views: number;
   user: UserResponse;
   comments: CommentResponse[];
 };
